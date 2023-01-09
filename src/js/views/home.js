@@ -1,15 +1,58 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
+import React, {useContext} from "react";
+import {Context} from "../store/appContext";
+import {CardCharacterBlog} from "../component/cardCharacterBlog";
+import {CardLocationBlog} from "../component/cardLocationBlog";
+import {CardEpisodeBlog} from "../component/cardEpisodeBlog";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
+
+
+export const Home = () => {
+	const {store} = useContext (Context);
+	return (
+	<div className=" mt-5">
+		
+		<div className="container">
+		<h1>Characters</h1>
+        <div className="row"> 
+		{store.characters.map((character)=> {
+			return <CardCharacterBlog key={character.id} character={character}/>
+
+
+		})}
+
+
+		</div>
+
+
+			
+		</div>
+		
+		<div className="container">
+		<h1>Locations</h1>
+		<div className="row"> 
+		{store.locations.map((location)=> {
+			return <CardLocationBlog key={location.id} location={location}/>
+
+
+		})}
+
+
+		</div>
+		</div>
+	
+		<div className="container">
+		<h1>Episodes</h1>
+		<div className="row"> 
+		{store.episodes.map((episode)=> {
+			return <CardEpisodeBlog key={episode.id} episode={episode}/>
+
+
+		})}
+
+
+		</div>
+		</div>
 	</div>
-);
+)
+
+	}
