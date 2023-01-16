@@ -8,7 +8,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-light bg-light mb-3 p-3 pe-5">
 <div className="dropdown ms-auto">
 	<button className="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-		Favorites
+	Read Later
 	</button>
 	<ul className="dropdown-menu dropdown-menu-end">
 		{ store.favorites.length > 0 ? store.favorites.map((favorite, i) =>{
