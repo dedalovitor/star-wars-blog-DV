@@ -3,7 +3,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 		characters: [],
 		locations: [],
-		episodes: []
+		episodes: [],
+		favorites:[]
 		},
 		actions: {
 			getCharacters: async () =>{ 
@@ -23,8 +24,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({episodes: data.results});
 
 			},
-			
+			setFavorites: (name) => {
+				const store = getStore();
+
+				if (!store.favorites.includes(name)){ 
+					setStore({favorites: [...store.favorites, name]});
+					
+				}else{
+					setStore({ favorites: store.favorites.filter((favName)=> favName != name)});
+					}
+				}
+				
 			}
+
+
+			
 		
 	};
 };
